@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TwitterActivity extends Activity {
     Context mContext;
-    Twitter mTwitter;    
+    Twitter mTwitter;
     ListView mListView;
 
     @Override
@@ -34,7 +34,7 @@ public class TwitterActivity extends Activity {
 
     private Twitter getTwitter() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setOAuthConsumerKey(mContext.getString(R.string.twitter_oauth_key)); 
+        cb.setOAuthConsumerKey(mContext.getString(R.string.twitter_oauth_key));
         cb.setOAuthConsumerSecret(mContext.getString(R.string.twitter_oauth_secret));
         return new TwitterFactory(cb.build()).getInstance();
     }
@@ -45,6 +45,7 @@ public class TwitterActivity extends Activity {
 
         try {
             tweets = mTwitter.search(new Query(queryString)).getTweets();
+
             for (Tweet t : tweets) {
                 tweetTexts.add(t.getText() + "\n\n");
             }
@@ -53,7 +54,7 @@ public class TwitterActivity extends Activity {
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            android.R.layout.simple_list_item_1, android.R.id.text1, tweetTexts);
+                android.R.layout.simple_list_item_1, android.R.id.text1, tweetTexts);
         mListView.setAdapter(adapter);
     }
 }
