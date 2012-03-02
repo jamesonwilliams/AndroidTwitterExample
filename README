@@ -1,0 +1,11 @@
+This is an example of using the Twitter4J library to access twitter from
+and Android application.
+
+Prerequisites:
+
+ - Go to https://dev.twitter.com/apps/new and register for a new OAuth
+   key/secret set.
+ - Put the Consumer Key and Consumer Secret into res/values/strings.xml
+ - Profit
+
+Jameson Williams <jameson.h.williams@intel.com>

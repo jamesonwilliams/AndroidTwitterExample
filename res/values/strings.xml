@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TwitterActivity</string>
+    <string name="twitter_oauth_key">YOUR CONSUMER KEY HERE</string>
+    <string name="twitter_oauth_secret">YOUR CONSUMER SECRET HERE</string>
+</resources>
