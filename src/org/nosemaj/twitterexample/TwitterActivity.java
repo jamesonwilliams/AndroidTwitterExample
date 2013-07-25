@@ -34,27 +34,29 @@ public class TwitterActivity extends Activity {
 
     private Twitter getTwitter() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setOAuthConsumerKey(mContext.getString(R.string.twitter_oauth_key));
-        cb.setOAuthConsumerSecret(mContext.getString(R.string.twitter_oauth_secret));
+        cb.setOAuthConsumerKey(getString(R.string.consumer_key));
+        cb.setOAuthConsumerSecret(getString(R.string.consumer_secret));
+        cb.setOAuthAccessToken(getString(R.string.access_token));
+        cb.setOAuthAccessTokenSecret(getString(R.string.access_token_secret));
         return new TwitterFactory(cb.build()).getInstance();
     }
 
     private void showTweetsAbout(String queryString) {
-        List<Tweet> tweets = new ArrayList<Tweet>();
-        ArrayList<String> tweetTexts = new ArrayList<String>();
+        List<Status> statuses = new ArrayList<Status>();
+        ArrayList<String> statusTexts = new ArrayList<String>();
 
         try {
-            tweets = mTwitter.search(new Query(queryString)).getTweets();
+            statuses = mTwitter.search(new Query(queryString)).getTweets();
 
-            for (Tweet t : tweets) {
-                tweetTexts.add(t.getText() + "\n\n");
+            for (Status s : statuses) {
+                statusTexts.add(s.getText() + "\n\n");
             }
         } catch (Exception e) {
-            tweetTexts.add("Twitter query failed: " + e.toString());
+            statusTexts.add("Twitter query failed: " + e.toString());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, tweetTexts);
+                android.R.layout.simple_list_item_1, android.R.id.text1, statusTexts);
         mListView.setAdapter(adapter);
     }
 }
